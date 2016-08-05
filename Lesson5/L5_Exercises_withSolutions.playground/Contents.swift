@@ -75,6 +75,7 @@ cleanUp(dirtyWordsArray)
 var movies:Dictionary<String,String> = [ "Boyhood":"Richard Linklater","Inception":"Christopher Nolan", "The Hurt Locker":"Kathryn Bigelow", "Selma":"Ava Du Vernay", "Interstellar":"Christopher Nolan"]
 
 class MovieArchive {
+    
     func filterByDirector(currentDirector:String, movies: Dictionary<String, String>) -> [String] {
         var filteredArray = [String]()
         for (movie, director) in movies {
