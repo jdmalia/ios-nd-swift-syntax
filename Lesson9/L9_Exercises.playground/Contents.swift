@@ -14,12 +14,16 @@ var surnames = ["Silverman", "Fey", "Whig", "Schumer", "Kaling"]
 let orderedSurnames = surnames.sort({(name1: String, name2: String) -> Bool in
     return name2 > name1
 })
+let reversedSurnames = surnames.sort({$0 > $1})
+reversedSurnames
 
 // 2
 let battingAverages = [0.302, 0.556, 0.280, 0.500, 0.281, 0.285]
 let sortedAverages = battingAverages.sort({(average1: Double, average2: Double) -> Bool in
     return average2 > average1
 })
+let reversedBattingAverages = battingAverages.sort({$0 > $1})
+reversedBattingAverages
 
 //: __Problem 3__
 //:
@@ -32,7 +36,8 @@ let divisibleByThree = numbers.filter({(number: Int) -> Bool in
 //: __3a.__
 //:Filter the following array for the numbers which are divisible by 12.
 let numbersAsStrings = ["685", "1728", "648", "87", "979", "59175432"]
-
+let divisibleByTwelve = numbers.filter({$0 % 12 == 0})
+divisibleByTwelve
 //: __3b.__
 //: Rewrite the filtering closure expression to be as concise as possible.
 
@@ -40,6 +45,8 @@ let numbersAsStrings = ["685", "1728", "648", "87", "979", "59175432"]
 //:
 //: Filtering out particles greater that 20 microns has been shown to reduce exposure to waterborne pathogens. Filter the following array for all of the particles below 20 microns in size. Assign the result to a new array.
 let particleSizesInMicrons = [150, 16, 82, 30, 10, 57]
+let greaterThan20Microns = particleSizesInMicrons.filter({$0 > 20})
+greaterThan20Microns
 
 //: __Problem 5__
 //:
@@ -52,6 +59,8 @@ let sizesAsStrings = particleSizesInMicrons.map({ (size: Int) -> String in
 //: Ben just got back from India and he is tallying what he spent on gifts for his customs form.
 //: Use the map() method to transform this array of prices into dollars. Round to the nearest dollar.
 let pricesInRupees = [750, 825, 2000, 725]
+let priceInDollars = pricesInRupees.map({Int(round((Double($0) * 0.015)))})
+priceInDollars
 
 //: __Problem 6__
 //:
@@ -73,3 +82,4 @@ func timeStringFromInterval(timeInterval: Int) -> NSString {
 }
 
 var oldTimes = ["5:18", "5:45", "5:56", "5:25", "5:27"]
+var newTimes = oldTimes.map({timeStringFromInterval(timeIntervalFromString($0) + 13)})
